@@ -18,13 +18,12 @@ class TodoApp extends Component {
     storeItems = (event) =>{
         event.preventDefault()
         const {input} = this.state;
-        const allItems = this.state.items;
-
-        allItems.push(input);
 
         this.setState({
-            items: allItems
+            items: [...this.state.items,input],
+            input: ""
         })
+
     }
 
     render() {
@@ -41,7 +40,9 @@ class TodoApp extends Component {
                 </form>
 
                 <ul>
-                    <li>Items <i className="fas fa-trash-alt"></i></li>
+                   {items.map((data,index)=>(
+                       <li key={index}>{data} <i onClick={this.deleteItem} className="fas fa-trash-alt"></i></li>
+                   ))}
                 </ul>
             </div>
         )

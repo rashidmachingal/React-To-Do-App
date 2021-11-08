@@ -58,7 +58,8 @@ ul li{
     display: flex;
 }
 
-li i{
+ul li i{
     text-align: right;
     flex: 1;
+    cursor: pointer;
 }
