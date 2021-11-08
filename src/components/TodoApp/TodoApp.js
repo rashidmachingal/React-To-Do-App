@@ -26,10 +26,20 @@ class TodoApp extends Component {
 
     }
 
+    deleteItem = (key) =>{
+        const allItems = this.state.items;
+
+        allItems.splice(key,1);
+
+        this.setState({
+            items:allItems
+        })
+    }
+
     render() {
         const {input,items} = this.state
 
-        console.log(items);
+        
 
         return (
             <div className="todo-container">
@@ -41,7 +51,7 @@ class TodoApp extends Component {
 
                 <ul>
                    {items.map((data,index)=>(
-                       <li key={index}>{data} <i onClick={this.deleteItem} className="fas fa-trash-alt"></i></li>
+                       <li key={index}>{data} <i onClick={() => this.deleteItem(index)} className="fas fa-trash-alt"></i></li>
                    ))}
                 </ul>
             </div>
